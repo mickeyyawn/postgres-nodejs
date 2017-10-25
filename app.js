@@ -11,15 +11,14 @@ const express = require('express')
 const app = express()
 
 
-app.use(express.static('public'))
-
-global.appRoot = path.resolve(__dirname);
-
 app.get('/', function (req, res) {
 
-  res.json({"status":"ok"});
+  res.send('Hello World!')
 
 })
+
+
+
 
 var start = function (app, PORT, HOST) {
 
@@ -45,6 +44,19 @@ var start = function (app, PORT, HOST) {
 
 }
 
+async function exercisePostgres() {
+
+  const { Pool, Client } = require('pg')
+  const client = new Client()
+
+  await client.connect()
+
+  const res = await client.query('SELECT NOW()')
+  await client.end()
+
+}
+
 start(app, PORT, HOST);
+//exercisePostgres()
 
 
