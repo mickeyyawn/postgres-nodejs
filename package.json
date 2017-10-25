@@ -1,0 +1,24 @@
+{
+  "name": "postgres-nodejs",
+  "version": "1.0.0",
+  "description": "Just a quick exercise of postgres from nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickeyyawn/postgres-nodejs.git"
+  },
+  "keywords": [
+    "postgres",
+    "nodejs",
+    "poc"
+  ],
+  "author": "Mickey Yawn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mickeyyawn/postgres-nodejs/issues"
+  },
+  "homepage": "https://github.com/mickeyyawn/postgres-nodejs#readme"
+}
