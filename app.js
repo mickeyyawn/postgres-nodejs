@@ -10,10 +10,31 @@ HOST = '0.0.0.0'
 const express = require('express')
 const app = express()
 
+const { Pool, Client } = require('pg')
+const connectionString = process.env.DATABASE_URL;
+
+
 
 app.get('/', function (req, res) {
 
   res.send('Hello World!')
+
+})
+
+app.get('/test', function (req, res) {
+
+  console.log('attempting to connect to postgres')
+  console.log(connectionString)
+  const client = new Client({connectionString: connectionString})
+  console.log('initiating connection...')
+  client.connect()
+
+  client.query('SELECT NOW()', (err, res) => {
+    console.log(err, res)
+    client.end()
+  })
+
+  res.send('done with test!')
 
 })
 
@@ -44,10 +65,13 @@ var start = function (app, PORT, HOST) {
 
 }
 
+
+
+
+
 async function exercisePostgres() {
 
-  const { Pool, Client } = require('pg')
-  const client = new Client()
+
 
   await client.connect()
 
